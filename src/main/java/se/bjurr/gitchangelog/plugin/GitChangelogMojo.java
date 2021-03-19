@@ -110,6 +110,9 @@ public class GitChangelogMojo extends AbstractMojo {
   @Parameter(property = "jiraUsername", required = false)
   private String jiraUsername;
 
+  @Parameter(property = "jiraIssueFieldsFilter", required = false)
+  private Map jiraIssueFieldsFilter;
+
   @Parameter(property = "ignoreCommitsWithoutIssue", required = false)
   private Boolean ignoreCommitsWithoutIssue;
 
@@ -228,6 +231,9 @@ public class GitChangelogMojo extends AbstractMojo {
       }
       if (this.isSupplied(this.jiraServer)) {
         builder.withJiraServer(this.jiraServer);
+      }
+      if (this.isSupplied(this.jiraIssueFieldsFilter)) {
+        builder.withJiraIssueFieldsFilter(this.jiraIssueFieldsFilter);
       }
 
       if (this.isSupplied(this.pathFilter)) {
